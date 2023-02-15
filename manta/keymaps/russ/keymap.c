@@ -29,13 +29,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         L4_0301,    L4_0302,    L4_0303,    L4_0304,    L4_0305,    XXXXXXX, XXXXXXX,   L4_0306,    L4_0307,    L4_0308,    L4_0309,    L4_0310
     )
 };
-
-void matrix_init_user(void) {
-}
-
-void matrix_scan_user(void) {
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-	return true;
-}

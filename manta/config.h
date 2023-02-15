@@ -1,6 +1,7 @@
 #pragma once
 
 #include "config_common.h"
+#include "../config.h"
 
 /* key matrix size */
 #define MATRIX_ROWS 3

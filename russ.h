@@ -1,6 +1,12 @@
-#define ONESHOT_TAP_TOGGLE 2  /* Tapping this number of times holds the key until tapped once again. */
-#define ONESHOT_TIMEOUT 5000  /* Time (in ms) before the one shot key is released */
+#define ONESHOT_TIMEOUT 5000
+#define ONESHOT_TAP_TOGGLE 2
 #define HOLD_ON_OTHER_KEY_PRESS
+
+#ifdef TAPPING_TERM
+    #undef TAPPING_TERM
+#endif
+
+#define TAPPING_TERM 120
 
 enum Layers {
     Base,
@@ -36,10 +42,10 @@ enum Layers {
 #define L1_0302 KC_X
 #define L1_0303 KC_C
 #ifdef MANTA
-    #define L1_0304 LT(Nav, KC_V)
+    #define L1_0304 MO(Nav)
     #define L1_0305 KC_BSPC
     #define L1_0306 KC_SPC
-    #define L1_0307 LT(Num, KC_M)
+    #define L1_0307 MO(Num)
 #else
     #define L1_0304 KC_V
     #define L1_0305 KC_B
@@ -67,10 +73,16 @@ enum Layers {
 #define L2_0109 XXXXXXX
 #define L2_0110 _______
 
+/*
 #define L2_0201 OSM(MOD_LGUI)
 #define L2_0202 OSM(MOD_LALT)
 #define L2_0203 OSM(MOD_LCTL)
 #define L2_0204 OSM(MOD_LSFT)
+*/
+#define L2_0201 KC_LGUI
+#define L2_0202 KC_LALT
+#define L2_0203 KC_LCTL
+#define L2_0204 KC_LSFT
 #define L2_0205 XXXXXXX
 #define L2_0206 KC_LEFT
 #define L2_0207 KC_DOWN
@@ -112,10 +124,16 @@ enum Layers {
 #define L3_0204 KC_6
 #define L3_0205 KC_EQL
 #define L3_0206 XXXXXXX
+/*
 #define L3_0207 OSM(MOD_RSFT)
 #define L3_0208 OSM(MOD_RCTL)
 #define L3_0209 OSM(MOD_RALT)
 #define L3_0210 OSM(MOD_RGUI)
+*/
+#define L3_0207 KC_RSFT
+#define L3_0208 KC_RCTL
+#define L3_0209 KC_RALT
+#define L3_0210 KC_RGUI
 
 #define L3_0301 KC_GRAVE
 #define L3_0302 KC_1
@@ -129,7 +147,7 @@ enum Layers {
 #define L3_0310 XXXXXXX
 
 #define L3_0401 KC_0 
-#define L3_0402 KC_DASH
+#define L3_0402 KC_MINS
 #define L3_0403 XXXXXXX
 #define L3_0404 XXXXXXX
 
@@ -151,10 +169,16 @@ enum Layers {
 #define L4_0204 KC_F6
 #define L4_0205 KC_SCRL
 #define L4_0206 XXXXXXX
+/*
 #define L4_0207 OSM(MOD_RSFT)
 #define L4_0208 OSM(MOD_RCTL)
 #define L4_0209 OSM(MOD_RALT)
 #define L4_0210 OSM(MOD_RGUI)
+*/
+#define L4_0207 KC_RSFT
+#define L4_0208 KC_RCTL
+#define L4_0209 KC_RALT
+#define L4_0210 KC_RGUI
 
 #define L4_0301 KC_F10
 #define L4_0302 KC_F1
@@ -178,8 +202,11 @@ enum combos {
     ENT,
     FUN,
 #ifdef MANTA
+    V,
     B,
+    M,
     K,
+    BSLS,
 #endif
     COMBO_LENGTH,
 };
@@ -190,8 +217,11 @@ const uint16_t PROGMEM esc_combo[] = {L1_0202, L1_0203, COMBO_END};
 const uint16_t PROGMEM ent_combo[] = {L1_0208, L1_0209, COMBO_END};
 const uint16_t PROGMEM fun_combo[] = {L1_0304, L1_0307, COMBO_END};
 #ifdef MANTA
+const uint16_t PROGMEM v_combo[]   = {L1_0304, L1_0305, COMBO_END};
 const uint16_t PROGMEM b_combo[]   = {L1_0303, L1_0304, COMBO_END};
+const uint16_t PROGMEM m_combo[]   = {L1_0306, L1_0307, COMBO_END};
 const uint16_t PROGMEM k_combo[]   = {L1_0307, L1_0308, COMBO_END};
+const uint16_t PROGMEM bsls_combo[]= {L3_0303, L3_0304, COMBO_END};
 #endif
 
 combo_t key_combos[] = {
@@ -200,7 +230,18 @@ combo_t key_combos[] = {
   [ENT] = COMBO(ent_combo, KC_ENT),
   [FUN] = COMBO(fun_combo, MO(Fun)),
 #ifdef MANTA
-  [B]   = COMBO(b_combo, KC_B),
-  [K]   = COMBO(k_combo, KC_K),
+  [V]       = COMBO(v_combo,    KC_V),
+  [B]       = COMBO(b_combo,    KC_B),
+  [K]       = COMBO(k_combo,    KC_K),
+  [M]       = COMBO(m_combo,    KC_M),
+  [BSLS]    = COMBO(bsls_combo, KC_BSLS),
 #endif
 };
+
+void keyboard_post_init_user(void) {
+    // Customise these values to desired behaviour
+    debug_enable = true;
+    // debug_matrix = true;
+    // debug_keyboard = true;
+    // debug_mouse = true;
+}
