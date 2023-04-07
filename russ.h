@@ -1,12 +1,15 @@
-#define ONESHOT_TIMEOUT 5000
-#define ONESHOT_TAP_TOGGLE 2
-#define HOLD_ON_OTHER_KEY_PRESS
-
 #ifdef TAPPING_TERM
     #undef TAPPING_TERM
 #endif
+#ifdef COMBO_TERM
+    #undef COMBO_TERM
+#endif
 
+#define ONESHOT_TIMEOUT 5000
+#define ONESHOT_TAP_TOGGLE 2
+#define HOLD_ON_OTHER_KEY_PRESS
 #define TAPPING_TERM 120
+#define COMBO_TERM 40
 
 enum Layers {
     Base,
@@ -73,12 +76,6 @@ enum Layers {
 #define L2_0109 XXXXXXX
 #define L2_0110 _______
 
-/*
-#define L2_0201 OSM(MOD_LGUI)
-#define L2_0202 OSM(MOD_LALT)
-#define L2_0203 OSM(MOD_LCTL)
-#define L2_0204 OSM(MOD_LSFT)
-*/
 #define L2_0201 KC_LGUI
 #define L2_0202 KC_LALT
 #define L2_0203 KC_LCTL
@@ -97,9 +94,9 @@ enum Layers {
 #define L2_0305 XXXXXXX
 #define L2_0306 XXXXXXX
 #define L2_0307 XXXXXXX
-#define L2_0308 XXXXXXX
-#define L2_0309 XXXXXXX
-#define L2_0310 XXXXXXX
+#define L2_0308 _______
+#define L2_0309 _______
+#define L2_0310 _______
 
 #define L2_0401 XXXXXXX 
 #define L2_0402 XXXXXXX
@@ -124,12 +121,6 @@ enum Layers {
 #define L3_0204 KC_6
 #define L3_0205 KC_EQL
 #define L3_0206 XXXXXXX
-/*
-#define L3_0207 OSM(MOD_RSFT)
-#define L3_0208 OSM(MOD_RCTL)
-#define L3_0209 OSM(MOD_RALT)
-#define L3_0210 OSM(MOD_RGUI)
-*/
 #define L3_0207 KC_RSFT
 #define L3_0208 KC_RCTL
 #define L3_0209 KC_RALT
@@ -161,7 +152,7 @@ enum Layers {
 #define L4_0107 XXXXXXX
 #define L4_0108 XXXXXXX
 #define L4_0109 XXXXXXX
-#define L4_0110 XXXXXXX
+#define L4_0110 QK_BOOT
 
 #define L4_0201 KC_F11
 #define L4_0202 KC_F4
@@ -169,12 +160,6 @@ enum Layers {
 #define L4_0204 KC_F6
 #define L4_0205 KC_SCRL
 #define L4_0206 XXXXXXX
-/*
-#define L4_0207 OSM(MOD_RSFT)
-#define L4_0208 OSM(MOD_RCTL)
-#define L4_0209 OSM(MOD_RALT)
-#define L4_0210 OSM(MOD_RGUI)
-*/
 #define L4_0207 KC_RSFT
 #define L4_0208 KC_RCTL
 #define L4_0209 KC_RALT
@@ -201,6 +186,7 @@ enum combos {
     ESC,
     ENT,
     FUN,
+    CW,
 #ifdef MANTA
     V,
     B,
@@ -215,7 +201,8 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 const uint16_t PROGMEM tab_combo[] = {L1_0203, L1_0204, COMBO_END};
 const uint16_t PROGMEM esc_combo[] = {L1_0202, L1_0203, COMBO_END};
 const uint16_t PROGMEM ent_combo[] = {L1_0208, L1_0209, COMBO_END};
-const uint16_t PROGMEM fun_combo[] = {L1_0304, L1_0307, COMBO_END};
+const uint16_t PROGMEM fun_combo[] = {L1_0401, L1_0404, COMBO_END};
+const uint16_t PROGMEM cw_combo[]  = {L1_0105, L1_0205, COMBO_END};
 #ifdef MANTA
 const uint16_t PROGMEM v_combo[]   = {L1_0304, L1_0305, COMBO_END};
 const uint16_t PROGMEM b_combo[]   = {L1_0303, L1_0304, COMBO_END};
@@ -229,6 +216,7 @@ combo_t key_combos[] = {
   [ESC] = COMBO(esc_combo, KC_ESC),
   [ENT] = COMBO(ent_combo, KC_ENT),
   [FUN] = COMBO(fun_combo, MO(Fun)),
+  [CW]  = COMBO(cw_combo,  QK_CAPS_WORD_TOGGLE),
 #ifdef MANTA
   [V]       = COMBO(v_combo,    KC_V),
   [B]       = COMBO(b_combo,    KC_B),
@@ -240,7 +228,7 @@ combo_t key_combos[] = {
 
 void keyboard_post_init_user(void) {
     // Customise these values to desired behaviour
-    debug_enable = true;
+    // debug_enable = false;
     // debug_matrix = true;
     // debug_keyboard = true;
     // debug_mouse = true;
