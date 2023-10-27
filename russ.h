@@ -1,8 +1,8 @@
 #ifdef TAPPING_TERM
-    #undef TAPPING_TERM
+#undef TAPPING_TERM
 #endif
 #ifdef COMBO_TERM
-    #undef COMBO_TERM
+#undef COMBO_TERM
 #endif
 
 #define ONESHOT_TIMEOUT 5000
@@ -12,10 +12,10 @@
 #define COMBO_TERM 40
 
 enum Layers {
-    Base,
-    Nav,
-    Num,
-    Fun,
+  Base,
+  Nav,
+  Num,
+  Fun,
 };
 
 /* Base layer */
@@ -45,15 +45,15 @@ enum Layers {
 #define L1_0302 KC_X
 #define L1_0303 KC_C
 #ifdef MANTA
-    #define L1_0304 MO(Nav)
-    #define L1_0305 KC_BSPC
-    #define L1_0306 KC_SPC
-    #define L1_0307 MO(Num)
+#define L1_0304 MO(Nav)
+#define L1_0305 KC_BSPC
+#define L1_0306 KC_SPC
+#define L1_0307 MO(Num)
 #else
-    #define L1_0304 KC_V
-    #define L1_0305 KC_B
-    #define L1_0306 KC_K
-    #define L1_0307 KC_M
+#define L1_0304 KC_V
+#define L1_0305 KC_B
+#define L1_0306 KC_K
+#define L1_0307 KC_M
 #endif
 #define L1_0308 KC_COMM
 #define L1_0309 KC_DOT
@@ -65,11 +65,11 @@ enum Layers {
 #define L1_0404 MO(Num)
 
 /* Navigation layer */
-#define L2_0101 XXXXXXX
-#define L2_0102 XXXXXXX
-#define L2_0103 XXXXXXX
-#define L2_0104 XXXXXXX
-#define L2_0105 XXXXXXX
+#define L2_0101 RGB_TOG
+#define L2_0102 RGB_MOD
+#define L2_0103 RGB_HUI
+#define L2_0104 RGB_SAI
+#define L2_0105 RGB_VAI
 #define L2_0106 KC_MPLY
 #define L2_0107 KC_VOLD
 #define L2_0108 KC_VOLU
@@ -87,18 +87,18 @@ enum Layers {
 #define L2_0209 KC_RIGHT
 #define L2_0210 KC_DEL
 
-#define L2_0301 XXXXXXX
-#define L2_0302 XXXXXXX
-#define L2_0303 XXXXXXX
-#define L2_0304 XXXXXXX
-#define L2_0305 XXXXXXX
+#define L2_0301 RGB_SPI
+#define L2_0302 RGB_SPD
+#define L2_0303 RGB_HUD
+#define L2_0304 RGB_SAD
+#define L2_0305 RGB_VAD
 #define L2_0306 XXXXXXX
 #define L2_0307 XXXXXXX
 #define L2_0308 _______
 #define L2_0309 _______
 #define L2_0310 _______
 
-#define L2_0401 XXXXXXX 
+#define L2_0401 XXXXXXX
 #define L2_0402 XXXXXXX
 #define L2_0403 XXXXXXX
 #define L2_0404 XXXXXXX
@@ -137,7 +137,7 @@ enum Layers {
 #define L3_0309 KC_DOT
 #define L3_0310 XXXXXXX
 
-#define L3_0401 KC_0 
+#define L3_0401 KC_0
 #define L3_0402 KC_MINS
 #define L3_0403 XXXXXXX
 #define L3_0404 XXXXXXX
@@ -176,60 +176,60 @@ enum Layers {
 #define L4_0309 XXXXXXX
 #define L4_0310 XXXXXXX
 
-#define L4_0401 XXXXXXX 
+#define L4_0401 XXXXXXX
 #define L4_0402 XXXXXXX
 #define L4_0403 XXXXXXX
 #define L4_0404 XXXXXXX
 
 enum combos {
-    TAB,
-    ESC,
-    ENT,
-    FUN,
-    CW,
+  TAB,
+  ESC,
+  ENT,
+  FUN,
+  CW,
 #ifdef MANTA
-    V,
-    B,
-    M,
-    K,
-    BSLS,
+  V,
+  B,
+  M,
+  K,
+  BSLS,
 #endif
-    COMBO_LENGTH,
+  COMBO_LENGTH,
 };
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM tab_combo[] = {L1_0203, L1_0204, COMBO_END};
-const uint16_t PROGMEM esc_combo[] = {L1_0202, L1_0203, COMBO_END};
-const uint16_t PROGMEM ent_combo[] = {L1_0208, L1_0209, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = {L1_0204, L1_0304, COMBO_END};
+const uint16_t PROGMEM esc_combo[] = {L3_0202, L3_0203, COMBO_END};
+const uint16_t PROGMEM ent_combo[] = {L1_0207, L1_0307, COMBO_END};
 const uint16_t PROGMEM fun_combo[] = {L1_0401, L1_0404, COMBO_END};
-const uint16_t PROGMEM cw_combo[]  = {L1_0105, L1_0205, COMBO_END};
+const uint16_t PROGMEM cw_combo[] = {L1_0105, L1_0205, COMBO_END};
 #ifdef MANTA
-const uint16_t PROGMEM v_combo[]   = {L1_0304, L1_0305, COMBO_END};
-const uint16_t PROGMEM b_combo[]   = {L1_0303, L1_0304, COMBO_END};
-const uint16_t PROGMEM m_combo[]   = {L1_0306, L1_0307, COMBO_END};
-const uint16_t PROGMEM k_combo[]   = {L1_0307, L1_0308, COMBO_END};
-const uint16_t PROGMEM bsls_combo[]= {L3_0303, L3_0304, COMBO_END};
+const uint16_t PROGMEM v_combo[] = {L1_0304, L1_0305, COMBO_END};
+const uint16_t PROGMEM b_combo[] = {L1_0303, L1_0304, COMBO_END};
+const uint16_t PROGMEM m_combo[] = {L1_0306, L1_0307, COMBO_END};
+const uint16_t PROGMEM k_combo[] = {L1_0307, L1_0308, COMBO_END};
+const uint16_t PROGMEM bsls_combo[] = {L3_0303, L3_0304, COMBO_END};
 #endif
 
 combo_t key_combos[] = {
-  [TAB] = COMBO(tab_combo, KC_TAB),
-  [ESC] = COMBO(esc_combo, KC_ESC),
-  [ENT] = COMBO(ent_combo, KC_ENT),
-  [FUN] = COMBO(fun_combo, MO(Fun)),
-  [CW]  = COMBO(cw_combo,  QK_CAPS_WORD_TOGGLE),
+    [TAB] = COMBO(tab_combo, KC_TAB),
+    [ESC] = COMBO(esc_combo, KC_ESC),
+    [ENT] = COMBO(ent_combo, KC_ENT),
+    [FUN] = COMBO(fun_combo, MO(Fun)),
+    [CW] = COMBO(cw_combo, QK_CAPS_WORD_TOGGLE),
 #ifdef MANTA
-  [V]       = COMBO(v_combo,    KC_V),
-  [B]       = COMBO(b_combo,    KC_B),
-  [K]       = COMBO(k_combo,    KC_K),
-  [M]       = COMBO(m_combo,    KC_M),
-  [BSLS]    = COMBO(bsls_combo, KC_BSLS),
+    [V] = COMBO(v_combo, KC_V),
+    [B] = COMBO(b_combo, KC_B),
+    [K] = COMBO(k_combo, KC_K),
+    [M] = COMBO(m_combo, KC_M),
+    [BSLS] = COMBO(bsls_combo, KC_BSLS),
 #endif
 };
 
 void keyboard_post_init_user(void) {
-    // Customise these values to desired behaviour
-    // debug_enable = false;
-    // debug_matrix = true;
-    // debug_keyboard = true;
-    // debug_mouse = true;
+  // Customise these values to desired behaviour
+  // debug_enable = false;
+  // debug_matrix = true;
+  // debug_keyboard = true;
+  // debug_mouse = true;
 }
