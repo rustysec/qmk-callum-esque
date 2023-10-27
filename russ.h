@@ -104,11 +104,11 @@ enum Layers {
 #define L2_0404 XXXXXXX
 
 /* Number layer */
-#define L3_0101 KC_LCBR
+#define L3_0101 KC_LBRC
 #define L3_0102 KC_7
 #define L3_0103 KC_8
 #define L3_0104 KC_9
-#define L3_0105 KC_RCBR
+#define L3_0105 KC_RBRC
 #define L3_0106 XXXXXXX
 #define L3_0107 XXXXXXX
 #define L3_0108 XXXXXXX
