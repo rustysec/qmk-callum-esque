@@ -132,8 +132,8 @@ enum Layers {
 #define L3_0304 KC_3
 #define L3_0305 KC_BSLS
 #define L3_0306 KC_0
-#define L3_0307 XXXXXXX
-#define L3_0308 XXXXXXX
+#define L3_0307 KC_HOME
+#define L3_0308 KC_END
 #define L3_0309 KC_DOT
 #define L3_0310 XXXXXXX
 
