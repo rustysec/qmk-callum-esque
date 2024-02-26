@@ -93,8 +93,8 @@ enum Layers {
 #define L2_0304 RGB_SAD
 #define L2_0305 RGB_VAD
 #define L2_0306 XXXXXXX
-#define L2_0307 XXXXXXX
-#define L2_0308 _______
+#define L2_0307 KC_HOME
+#define L2_0308 KC_END
 #define L2_0309 _______
 #define L2_0310 _______
 
@@ -202,7 +202,7 @@ const uint16_t PROGMEM tab_combo[] = {L1_0204, L1_0304, COMBO_END};
 const uint16_t PROGMEM esc_combo[] = {L3_0202, L3_0203, COMBO_END};
 const uint16_t PROGMEM ent_combo[] = {L1_0207, L1_0307, COMBO_END};
 const uint16_t PROGMEM fun_combo[] = {L1_0401, L1_0404, COMBO_END};
-const uint16_t PROGMEM cw_combo[] = {L1_0105, L1_0205, COMBO_END};
+const uint16_t PROGMEM cw_combo[] = {L3_0105, L3_0205, COMBO_END};
 #ifdef MANTA
 const uint16_t PROGMEM v_combo[] = {L1_0304, L1_0305, COMBO_END};
 const uint16_t PROGMEM b_combo[] = {L1_0303, L1_0304, COMBO_END};
