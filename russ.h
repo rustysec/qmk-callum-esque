@@ -100,7 +100,7 @@ enum Layers {
 
 #define L2_0401 XXXXXXX
 #define L2_0402 XXXXXXX
-#define L2_0403 XXXXXXX
+#define L2_0403 KC_ENT
 #define L2_0404 XXXXXXX
 
 /* Number layer */
